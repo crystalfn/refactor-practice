@@ -7,7 +7,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.StringReader;
-import java.net.URL;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
@@ -17,13 +16,13 @@ public class CustomerTest {
 
 	private static final String GOLD_PATH = "data/";
 
-    private Customer dinsdale = new Customer("Dinsdale Pirhana");
+    private final Customer dinsdale = new Customer("Dinsdale Pirhana");
 
-    private Movie python = new Movie("Monty Python and the Holy Grail", Movie.REGULAR);
-	private Movie ran = new Movie("Ran", Movie.REGULAR);
-	private Movie la = new Movie("LA Confidential", Movie.NEW_RELEASE);
-	private Movie trek = new Movie("Star Trek 13.2", Movie.NEW_RELEASE);
-	private Movie wallace = new Movie("Wallace and Gromit", Movie.CHILDRENS);
+    private final Movie python = new Movie("Monty Python and the Holy Grail", Movie.REGULAR);
+	private final Movie ran = new Movie("Ran", Movie.REGULAR);
+	private final Movie la = new Movie("LA Confidential", Movie.NEW_RELEASE);
+	private final Movie trek = new Movie("Star Trek 13.2", Movie.NEW_RELEASE);
+	private final Movie wallace = new Movie("Wallace and Gromit", Movie.CHILDREN);
 
     @BeforeEach
     public void setUpData(){
