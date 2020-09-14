@@ -22,10 +22,10 @@ public class OrderReceipt {
 		double totalSalesTax = 0d;
 		double totalAmount = 0d;
 		for (LineItem lineItem : order.getLineItems()) {
-			appendStringWithHT(output, lineItem.getDescription());
-			appendStringWithHT(output, String.valueOf(lineItem.getPrice()));
-			appendStringWithHT(output, String.valueOf(lineItem.getQuantity()));
-			appendStringWithHT(output, String.valueOf(lineItem.totalAmount()));
+			outputAppendLineItemMessageAndHT(output, lineItem.getDescription());
+			outputAppendLineItemMessageAndHT(output, String.valueOf(lineItem.getPrice()));
+			outputAppendLineItemMessageAndHT(output, String.valueOf(lineItem.getQuantity()));
+			output.append(lineItem.totalAmount()).append('\n');
 
 			double taxRate = 0.10d;
             double salesTax = lineItem.totalAmount() * taxRate;
@@ -33,15 +33,13 @@ public class OrderReceipt {
             totalAmount += lineItem.totalAmount() + salesTax;
 		}
 
-		appendStringWithHT(output, "Sales Tax");
+		outputAppendLineItemMessageAndHT(output, "Sales Tax");
 		output.append(totalSalesTax);
-
-		appendStringWithHT(output, "Total Amount");
+		outputAppendLineItemMessageAndHT(output, "Total Amount");
 		output.append(totalAmount);
 	}
 
-	private void appendStringWithHT(StringBuilder output, String string) {
-		output.append(string);
-		output.append('\t');
+	private void outputAppendLineItemMessageAndHT(StringBuilder output, String lineItemMessage) {
+		output.append(lineItemMessage).append('\t');
 	}
 }
